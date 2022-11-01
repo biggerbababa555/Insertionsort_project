@@ -29,6 +29,7 @@ totalAmountButton.addEventListener("click", () => {
     //Clear Input Box
     totalAmount.value = "";
   }
+  
 });
 
 //Function To Disable Edit and Delete Button
@@ -122,6 +123,7 @@ checkAmountButton.addEventListener("click", () => {
   //Empty inputs
   // productTitle.value = "";
   // userAmount.value = "";
+  
 });
 
 function openNav() {
@@ -140,9 +142,19 @@ function closeNav() {
 
 
 function myFunction2() {
-  alldata1.sort(function(a, b){return a - b});
-  document.getElementById("demo").innerHTML = alldata1;
-  document.getElementById("demo1").innerHTML = alldata2;
+  // alldata1.sort(function(a, b){return a - b});
+  // document.getElementById("demo").innerHTML = alldata1;
+  // document.getElementById("demo1").innerHTML = alldata2;
+  var Amount = document.getElementsByClassName("amount")
+  var Result = []
+  for(var i = 0;i <= (Amount.length - 1);i++){
+    Result[i] = parseInt(Amount[i].innerText)
+  }
+  Result.sort(function(a, b){return a - b});
+  document.getElementById("demo").innerHTML = Result;
+
+
+
 
 }
 
