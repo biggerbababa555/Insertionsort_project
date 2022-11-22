@@ -152,10 +152,51 @@ function myFunction2() {
   }
   Result.sort(function(a, b){return a - b});
   document.getElementById("demo").innerHTML = Result;
-
+  // SortItem()
 
 
 
 }
 
 
+
+function SortItem(){
+  var amount = document.getElementsByClassName("amount")
+  var name = document.getElementsByClassName("product")
+  var Result = []
+  for(var i = 0; i <= (amount.length - 1); i++){
+    console.log(amount[i].innerText)
+    var Data = {"key": i, "value": parseInt(amount[i].innerText), "name": name[i].innerText }
+    Result.push(Data)
+  }
+  console.log(Result)
+  Result.sort((a, b) => a.value - b.value)
+  // console.log(Result)
+  Result.forEach(element => {
+    console.table(element)
+    listCreatorSorted(element.name, element.value)
+  });
+}
+
+
+const listCreatorSorted = (expenseName, expenseValue) => {
+  let sublistContent = document.createElement("div");
+  sublistContent.classList.add("sublist-content", "flex-space");
+  list.appendChild(sublistContent);
+  sublistContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
+  // let editButton = document.createElement("button");
+  // editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
+  // editButton.style.fontSize = "1.2em";
+  // editButton.addEventListener("click", () => {
+  //   modifyElement(editButton, true);
+  // });
+  // let deleteButton = document.createElement("button");
+  // deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
+  // deleteButton.style.fontSize = "1.2em";
+  // deleteButton.addEventListener("click", () => {
+  //   modifyElement(deleteButton);
+  // });
+  // sublistContent.appendChild(editButton);
+  // sublistContent.appendChild(deleteButton);
+  document.getElementById("sort_list").appendChild(sublistContent);
+};
